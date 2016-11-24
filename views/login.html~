@@ -64,7 +64,7 @@ span.psw {
 <body>
 
 <h2 style="text-align: center">Login Page</h2>
-<div style="width: 500px; margin: 200px auto 0 auto; margin-top: 200px auto 0 auto; position: absolute; left: 400px; top: -130px;">
+<div style="width: 500px; margin: 200px auto 0 auto; margin-top: 200px auto 0 auto; position: absolute; left: 400px; top: -120px;">
 <form action="action_page.php">
   <div class="imgcontainer">
     <img src="http://1bigappstore.com/images/avt-default.jpg" alt="Avatar" class="avatar">
