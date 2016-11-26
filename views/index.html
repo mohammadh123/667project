@@ -10,9 +10,6 @@
 		#c{
 			margin-top: 30px;
 		}
-		#messageArea{
-			display: none;
-		}
 	</style>
 
 	<body>
@@ -26,7 +23,7 @@
 	</ul>
 
 	<div class="container" id="c">
-		<div id="userFormArea" class="row">
+		<!-- <div id="userFormArea" class="row">
 			<div class="col-md-12">
 				<form id="userForm">
 					<div class="form-group">
@@ -37,7 +34,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
+		</div> -->
 		<div id="messageArea" class="row">
 			<div class="col-md-4">
 				<div class="well">
@@ -53,7 +50,7 @@
 						<label>Enter Message</label>
 						<textarea class="form-control" id="message"></textarea>
 						<br />
-						<input type="submit" class="btn btn-primary" value="Send Message"/>
+						<input type="submit" class="btn btn-primary" value="Send Message" onclick="userForm.submit()"/>
 					</div>
 				</form>
 			</div>
@@ -67,9 +64,9 @@
 			var $message = $('#message');
 			var $chat = $('#chat');
 			var $messageArea = $('#messageArea');
-			var $userFormArea = $('#userFormArea');
-			var $users = $('#users');
-			var $username = $('#username');
+			//var $userFormArea = $('#userFormArea');
+			//var $users = $('#users');
+			//var $username = $('#username');
 
 			$messageForm.submit(function(e){
 				e.preventDefault();
@@ -82,7 +79,7 @@
 			});
 
 			//I may have a problem with showing the chatbox, once I enter the username, the chat box won't show.
-			$userForm.submit(function(e){
+			/*$userForm.submit(function(e){
 				e.preventDefault();
 				socket.emit('new user', $username.val(), function(data){
 					if(data){
@@ -100,7 +97,7 @@
 				}
 
 				$users.html(html);
-			});
+			});*/
 		});
 	</script>
 	</body>
