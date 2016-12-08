@@ -8,8 +8,11 @@ module.exports = function(app)
     });
      app.get('/login',function(req,res){
         res.render('login.html');
-    });
-	app.get('/chat',function(req,res){
-        res.render('chat.html');
+    });	
+     app.get('/chatcontainer',function(req,res){
+        res.render('chatcontainer.html');
+    });	
+     app.get('/testchat',function(req,res){
+        res.render('testchat.html');
     });
 }

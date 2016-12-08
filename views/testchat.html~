@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<title>Test chat</title>
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<style>
+		body,
+		input,
+		textarea {
+    			font: 1em "Helvetica", sans-serif;
+		}
+
+		.chat-widget {
+    			position: fixed;
+    			bottom: 0;
+    			right: 20px;
+    			width: 300px;
+    			background-color: #edeff0;
+    			font-size: .9em;
+		}
+
+		.chat-messages {
+    			background-color: #fff;
+    			margin: 10px;
+    			padding: 10px;
+    			line-height: 1.2em;
+    			height: 550px;
+    			max-height: 550px;
+    			overflow-y: scroll;
+    			position : relative; bottom:0;
+		}
+
+		.chat-message span {
+    			color: #7b8b8e;
+    			margin-right: 5px;
+		}
+
+		.chat-message {
+    			padding: 10px;
+		}
+
+		.chat-message:nth-child(even) {
+    			background-color: #f9f9f9;
+		}
+
+		.chat-widget,
+		.chat-messages {
+   			border-top-right-radius: 5px;
+    			border-top-left-radius: 5px;
+		}
+
+		.chat-name,
+		.form-control{
+    			box-sizing: border-box;
+    			padding: 10px;
+    			margin: 0 10px 10px;
+    			width: calc(100% - 20px);
+		}
+
+		.chat-entry {
+    			height: 100px;
+    			resize: none;
+		}
+	</style>
+	<body>
+		@section('content')
+		<section class="content">
+    			<div class="chat-messages" id="chat-messagges">
+    			</div>
+    			<textarea class="form-control" placeholder="Type a message and hit enter" id="message"></textarea>
+			<br />
+			<input type="submit" class="btn btn-primary" value="Send Message"/>
+		</section>
+
+		<script>
+			$(function(){
+			var socket = io.connect();
+			//var $messageForm = $('#messageForm');
+			var $message = $('#message');
+			//var $chat = $('#chat');
+			//var $messageArea = $('#messageArea');
+
+			$messageForm.submit(function(e){
+				e.preventDefault();
+				socket.emit('send message', $message.val());
+				$message.val('');
+			});
+
+			socket.on('new message', function(data){
+				$chat.append('<div class="well"><strong>'+data.user+'</strong>: '+data.msg+'</div');;	
+			});		
+		</script>
+	</body>
+</html>

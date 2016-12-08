@@ -10,6 +10,22 @@
 		#c{
 			margin-top: 30px;
 		}
+		.FixedHeightContainer{
+  			top: 100px
+  			height: 250px;
+ 			width:250px;  
+		}
+		#messageForm{
+			float: right;
+			height: 270px;
+			width: 450px;
+		}
+		#chat{
+			float: right;
+			height: 270px;
+			width: 450px;
+			overflow: scroll;	
+		}	
 	</style>
 
 	<body>
@@ -43,14 +59,13 @@
 				</div>
 			</div>
 			<div class="col-md-8">
-				<div class="chat" id="chat"></div>
+				<div class="form-control" id="chat"></div>
 				
-				<form id="messageForm">
+				<form class="messageForm" id="messageForm">
 					<div class="form-group">
-						<label>Enter Message</label>
-						<textarea class="form-control" id="message"></textarea>
+						<textarea type="submit" class="form-control" id="message" placeholder="Enter Message"></textarea>
 						<br />
-						<input type="submit" class="btn btn-primary" value="Send Message" onclick="userForm.submit()"/>
+						<input type="submit" class="btn btn-primary" value="Send Message"/>
 					</div>
 				</form>
 			</div>
@@ -75,7 +90,19 @@
 			});
 
 			socket.on('new message', function(data){
-				$chat.append('<div class="well"><strong>'+data.user+'</strong>: '+data.msg+'</div');
+				$chat.append('<div class="well" id="msg"><strong>'+data.user+'</strong>: '+data.msg+'</div');;
+			});
+			
+			//This allows user to use enter key to send message
+			$message.keypress(function(e){
+  				if(e.keyCode == 13 && !e.shiftKey) {
+   					e.preventDefault();
+					socket.emit('send message', $message.val());
+					$message.val('');
+					//Auto bottom scroll 
+					var scroll = $('div.form-group').prop("scrollHeight") - $('div.form-group').height();
+    						$('div.form-group').scrollTop(scroll);
+  					}
 			});
 
 			//I may have a problem with showing the chatbox, once I enter the username, the chat box won't show.
@@ -98,6 +125,7 @@
 
 				$users.html(html);
 			});*/
+
 		});
 	</script>
 	</body>
