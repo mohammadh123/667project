@@ -50,6 +50,11 @@ span.psw {
     padding-top: 16px;
 }
 
+span.signup{
+	padding-top: 20px;
+	text-align: center;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
@@ -64,7 +69,7 @@ span.psw {
 <body>
 
 <h2 style="text-align: center">Login Page</h2>
-<div style="width: 500px; margin: 200px auto 0 auto; margin-top: 200px auto 0 auto; position: absolute; left: 400px; top: -120px;">
+<div style="width: 500px; margin: 200px auto 0 auto; margin-top: 200px auto 0 auto; position: absolute; left: 400px; top: -130px;">
 <form action="action_page.php">
   <div class="imgcontainer">
     <img src="http://1bigappstore.com/images/avt-default.jpg" alt="Avatar" class="avatar">
@@ -80,12 +85,12 @@ span.psw {
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn" onclick="history.go(-1)">Cancel</button>
+  <button type="button" class="cancelbtn" onclick="history.go(-1)">Cancel</button>
+    <span class="signup"><a href="#">Register</a></span>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
 </div>
-
 </body>
 </html>
 
